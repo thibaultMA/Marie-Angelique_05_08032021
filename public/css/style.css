@@ -1,0 +1,79 @@
+.o{color:#63E8E4 #3498db #6FACE8 #0055ffc2;}
+
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #B0D9D1;
+}
+main .titrePage{
+    text-align: center;
+}
+.rayon{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+.produit {
+    width: 80%;
+    margin:20px 0 ;
+    border: black solid 2px;
+    border-radius: 15px;
+    background: #04ADBF;
+    /* color: white; */
+}
+.produit img{
+    object-fit: cover;
+    width: 100%;
+    border-top-right-radius: 11px;
+    border-top-left-radius: 11px;
+
+}
+.produit .infoProduit{
+    padding: 5px;
+}
+#ajoutPanier{
+    background: none;
+    border: solid red;
+    cursor: pointer;
+}
+
+#ajoutPanier .caddie{
+    width: 20px;
+    vertical-align: middle;
+}
+#ajoutPanier:hover{
+    transition: 0.5s;
+    background: red;
+    color: white;
+}
+#ajoutPanier:hover .caddie{
+    fill: white;
+}
+@media screen and (min-width:596px){
+    .rayon{
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+    .produit{
+        width: 45%;
+        margin:20px auto;
+    }
+}
+@media screen and (min-width:1024px){
+    .rayon{
+        justify-content: center;
+    }
+    .produit{
+        width: 30%;
+        margin: 20px 14px;
+        max-width: 350px;
+    }
+}
+@media screen and (min-width:1422px){
+    .produit{
+        margin: 20px 50px;
+    }
+}

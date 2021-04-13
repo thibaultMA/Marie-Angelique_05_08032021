@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.chemin ul{
+    margin: 0;
+    padding:0 2px;}
+.chemin a{
+    display: inline-block;
+    list-style: none;
+    font-size: 12px;
+    color: black;
+    vertical-align: text-top;
+}
+.produit{
+    margin: 1px 10px;
+    border: solid 1px;
+    padding:  0 2px;
+}
+.produit .imgProduit{
+    width: 100%;
+}
+.titreProduit{
+    margin: 10px 0;
+}
+.lentille{
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+}
+.lentille h5,
+.lentille p{
+    margin: 0;
+}
+.description{
+    padding: 5px;
+    text-align: justify;
+}
