@@ -2,39 +2,83 @@ body{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    background: #B0D9D1;
 }
-.chemin ul{
-    margin: 0;
-    padding:0 2px;}
-.chemin a{
-    display: inline-block;
+.chemain{
     list-style: none;
-    font-size: 12px;
+    margin: 1px;
+    padding: 2px;
+    font-size: 13px;
+}
+.chemain li{
+    display: inline-block;
+}
+.chemain a{
+    text-decoration: none;
     color: black;
-    vertical-align: text-top;
 }
+                    /* fin chemain */
+
+                    /* produit */
 .produit{
-    margin: 1px 10px;
+    margin: 7px;
+    padding: 5px;
     border: solid 1px;
-    padding:  0 2px;
-}
-.produit .imgProduit{
-    width: 100%;
-}
-.titreProduit{
-    margin: 10px 0;
-}
-.lentille{
     display: flex;
-    align-items: center;
     flex-flow: wrap;
-    justify-content: space-evenly;
+}                    
+.articleImg{
+    margin: 5px;
+    
 }
-.lentille h5,
-.lentille p{
+.articleImg img{
+    object-fit: cover;
+    width:100% ;
+}
+.ficheProduit{
+display: block;
+}
+.lenses{
+   display: inline-flex;
+   
+}
+.lenses span{
+    display: inline;
+    flex-flow: wrap;
+    align-items: flex-start;
+}
+.lenses span ul{
+    list-style: none;
+    margin: 5px;
+    padding: 0;
+    display: flex;
+    flex-flow:wrap column;
+}
+.dot{
     margin: 0;
 }
-.description{
-    padding: 5px;
-    text-align: justify;
+                    /* fin lentilles
+
+                    debut description*/
+
+                    /* fin description
+
+                    debut bouton*/
+#ajoutPanier{
+    background: none;
+    border: solid red;
+    cursor: pointer;
+}
+
+#ajoutPanier .caddie{
+    width: 20px;
+    vertical-align: middle;
+}
+#ajoutPanier:hover{
+    transition: 0.5s;
+    background: red;
+    color: white;
+}
+#ajoutPanier:hover .caddie{
+    fill: white;
 }

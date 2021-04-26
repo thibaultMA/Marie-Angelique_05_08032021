@@ -1,4 +1,4 @@
-
+/* 
 .top{
     width: 100%;
     display: flex;
@@ -8,8 +8,8 @@
     border-bottom: solid 1px;
     
 }
-header a  {
-    width: 50%;
+header .hover  {
+
     margin: auto;
 }
 header img {
@@ -33,9 +33,9 @@ header img {
     display: inline-block;
 }
 
-#menu-deroulant a {
+#menu-deroulant .hover {
     text-decoration: none;
-	color:#000;
+	color:rgb(255, 255, 255);
 }
 #menu-deroulant ul {
     position: absolute;
@@ -65,7 +65,7 @@ header img {
 #totalPanier{
     border-radius: 35px;
     background: red;
-    width: 40%;
+    width: auto;
     padding: 5px;
     color: white;
     text-align: center;
@@ -75,10 +75,10 @@ header img {
     .top{
         height: 134px;
     }
-    header a,
+    header .hover,
     header img{
         height: 100%;
         width: auto;
     }
 }
-
+ */
