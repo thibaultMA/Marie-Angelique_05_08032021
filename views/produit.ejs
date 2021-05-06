@@ -40,12 +40,12 @@
                             <b>Lentilles :</b><p class="dot">  </p>
                             <span class=""> 
                                 
-                                <ul>
+                                <select>
                                     <% for( let i = 0; i < produitZero.lenses.length  ; i++ ) { %>
                                     <%  %> 
-                                    <li><input type="checkbox" name="lenses" id="lenses"><%=produitZero.lenses[i] %></li>
+                                    <option value=""><%=produitZero.lenses[i] %></option>
                                     <% } %>
-                                </ul>
+                                </select>
                             </span> 
                         </div>
                         <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
@@ -91,12 +91,12 @@
                                 <b>Lentilles :</b><p class="dot">  </p>
                                 <span class=""> 
                                     
-                                    <ul>
+                                    <select>
                                         <% for( let i = 0; i < produitUn.lenses.length  ; i++ ) { %>
                                         <%  %> 
-                                        <li><input type="checkbox" name="lenses" id="lenses"><%=produitUn.lenses[i] %></li>
+                                        <option value=""><%=produitUn.lenses[i] %></option>
                                         <% } %>
-                                    </ul>
+                                    </select>
                                 </span> 
                             </div>
                             <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
@@ -142,12 +142,12 @@
                             <b>Lentilles :</b><p class="dot">  </p>
                             <span class=""> 
                                 
-                                <ul>
+                                <select>
                                     <% for( let i = 0; i < produitDeux.lenses.length  ; i++ ) { %>
                                     <%  %> 
-                                    <li><input type="checkbox" name="lenses" id="lenses"><%=produitDeux.lenses[i] %></li>
+                                    <option value=""><%=produitDeux.lenses[i] %></option>
                                     <% } %>
-                                </ul>
+                                </select>
                             </span> 
                         </div>
                         <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
@@ -193,12 +193,12 @@
                             <b>Lentilles :</b><p class="dot">  </p>
                             <span class=""> 
                                 
-                                <ul>
+                                <select>
                                     <% for( let i = 0; i < produitTrois.lenses.length  ; i++ ) { %>
                                     <%  %> 
-                                    <li><input type="checkbox" name="lenses" id="lenses"><%=produitTrois.lenses[i] %></li>
+                                    <option value=""><%=produitTrois.lenses[i] %></option>
                                     <% } %>
-                                </ul>
+                                </select>
                             </span> 
                         </div>
                         <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
@@ -244,12 +244,12 @@
                             <b>Lentilles :</b><p class="dot">  </p>
                             <span class=""> 
                                 
-                                <ul>
+                                <select>
                                     <% for( let i = 0; i < produitQuatre.lenses.length  ; i++ ) { %>
-                                    <% %> 
-                                    <li><input type="radio" name="lenses" id="lenses" ><%=produitQuatre.lenses[i] %></li>
+                                    <%  %> 
+                                    <option value=""><%=produitQuatre.lenses[i] %></option>
                                     <% } %>
-                                </ul>
+                                </select>
                             </span> 
                         </div>
                         <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
@@ -277,4 +277,5 @@
             </section>
         <%} %>
     </main>
+    <script src="/api.js"></script> 
   <%- include('footer'); -%>

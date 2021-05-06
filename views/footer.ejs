@@ -1,7 +1,45 @@
 <footer>
-    <a href="contact" id="da">da</a>
+    <div>
+        <ul>
+            <li><a href="/" id="">acceuil</a></li>
+            <li><a href="/" id="">Votre panier</a></li>
+            <li > produits:
+                <ul>
+                    <li>Caméras vintage:
+                        <ul>
+                            <li><a href="/5be1ed3f1c9d44000030b061">Zurss 50S</a></li>
+                            <li><a href="/5be1ef211c9d44000030b062">Hirsch 400DTS</a></li>
+                            <li><a href="/5be9bc241c9d440000a730e7">Franck JS 105</a></li>
+                            <li><a href="/5be9c4471c9d440000a730e8"> Kuros TTS</a></li>
+                            <li><a href="/5be9c4c71c9d440000a730e9">Katatone </a></li>
+                        </ul>
+                    </li>
+                </ul>   
+            </li>
+        </ul>
+        
+    </div>
 </footer>
- <script src="/api.js"></script> 
+<!-- <script>
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    const total = document.getElementById("totalPanier");
+
+var totPanier = () => {
+    if(localStorage.getItem("panier")){
+    
+    let paniers = JSON.parse(localStorage.getItem("panier"));
+    if(paniers.length === 0){
+      total.innerHTML = "total: " + 0 + " €";
+    }else{
+      let panier = paniers.reduce(reducer);
+      total.innerHTML = "total: " + panier + " €";
+    }
+}
+}
+window.onload = totPanier()
+</script> -->
+ 
+<!-- <script src="/api.js"></script> -->
 </body>
 
 </html>

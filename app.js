@@ -37,7 +37,7 @@ app.use('/api/teddies', teddyRoutes);
 app.use('/api/furniture', furnitureRoutes);
 
 // ***************************************************************************************
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
 
 var options = {
   url: "http://localhost:3000/api/cameras/",
@@ -47,11 +47,7 @@ var options = {
     "Accept-Charset": "utf-8",
   },
 };
-app.post('/',(req,res,next)=>{
-  console.table(req.body);
-  res.redirect('/')
-  next()
-})
+
 
 app.use(express.static("public"));
 
@@ -81,9 +77,22 @@ request(options, function (err, res, body) {
       var page = url.parse(req.url).pathname;
       res.render("produit" , {page,ID ,produit, produitZero,produitUn,produitDeux,produitTrois,produitQuatre});
     })
-
+    
   }  
 });
+
+app.get("/panier", function (req, res) {
+  res.render("panier");
+})
+
+app.post("/order", function (req, res,body) {
+  var facture =(req.body)
+  var factureProds= JSON.parse(facture.produits)
+  console.log(req.body);  
+  res.render("post",{facture,factureProds});
+
+})
+
 
 // ***************************************************************************************
 

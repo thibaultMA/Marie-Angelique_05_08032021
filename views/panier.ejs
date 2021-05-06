@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/panier.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+</head>
+<body> 
+<%- include('header'); -%>
+<h1>tre</h1>
+
+<table id="cadie">
+    <thead>
+        <tr>
+            <th colspan="2">Votre panier :</th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+        <tr>
+            <td>Nom</td>
+            <td>Image</td>
+            <td>Prix</td>
+            <td>Quantité</td>
+            
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- ***************************************************************** -->
+<form method="post" action="/order" name="po">
+    <label for="firstName">Prèsnom :</label>
+    <input  type="text" name="firstName" placeholder="(julie, martin, ...)" value="Pnom"> <br>
+    <label for="lastName">nom :</label>
+    <input  type="text" name="lastName" placeholder="(dupont, ...)" value="nom"> <br>
+    <label for="address">address :</label>
+    <input  type="text" name="address" placeholder="(24 Rue de-chez-moi)" value="21 rue du chez moi"> <br>
+    <label for="city">ville :</label>
+    <input  type="text" name="city" placeholder="(Paris, lyon, ...)" value="poitier"> <br>
+    <label for="email">email :</label>
+    <input  type="email" name="email" placeholder="J.dupont@email.com" value="dazd@ddaz.com"> <br>
+    <input type="hidden" name="produits" id="hidden">
+    <input  type="submit" value="valider">
+</form>
+<p style="color: red;" id="erreur"></p>
+
+
+<script src="/panier.js"></script>
+<%- include('footer'); -%>

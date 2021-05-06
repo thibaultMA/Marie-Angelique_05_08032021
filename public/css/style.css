@@ -10,6 +10,9 @@ body{
 main .titrePage{
     text-align: center;
 }
+main .titre{
+    text-align: center;
+}
 .rayon{
     display: flex;
     flex-flow: column;

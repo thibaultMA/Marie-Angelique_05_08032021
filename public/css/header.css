@@ -1,4 +1,4 @@
-/* 
+
 .top{
     width: 100%;
     display: flex;
@@ -13,7 +13,7 @@ header .hover  {
     margin: auto;
 }
 header img {
-    width: 100%;
+    width: 89%;
 }
 .nav{
     position: absolute;
@@ -71,6 +71,10 @@ header img {
     text-align: center;
     justify-self: flex-end;
 }
+tbody img{
+    object-fit: contain;
+    width : 100%;
+}
 @media screen and (min-width:596px){
     .top{
         height: 134px;
@@ -81,4 +85,4 @@ header img {
         width: auto;
     }
 }
- */
+

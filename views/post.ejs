@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orinoco recapitulatif commande</title>
+    <link rel="stylesheet" href="/css/panier.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+</head>
+<body> 
+    <%- include('header'); -%>
+    <section>
+        <article>
+            <div class="infoCl">
+                <p>Nom : <%= facture.firstName %>  </p>
+                <p>prenom : <%= facture.lastName %> </p>
+                <p>adresse : <%= facture.address %> <%= facture.city %> </p>
+                <p>email : <%= facture.email %> </p>
+            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Nom</td>
+                        <td>Image</td>
+                        <td>Prix</td>
+                    </tr>
+                <% for (let i = 0; i < factureProds.length; i++) { const element = factureProds[i];%>
+                    
+                    <tr>
+                        <td><p><%= element[0] %></p> </td>
+                        <td><img src="<%= element[1] %>" alt="Image <%= element[0] %>"> </td>
+                        <td><p><%= element[2] %></p> </td>
+                        
+                    </tr>
+
+                    <%} %> 
+                </tbody>
+            </table>
+        </article>
+    </section>
+    <%= factureProds.length %> 
+
+    <%- include('footer'); -%>

@@ -1,99 +1,99 @@
-                                      // add panier
+// add panier
 const btnsAjout = document.querySelectorAll("#ajoutPanier");
-const btnsDel = document.querySelectorAll("#delete")
+const btnsDel = document.querySelectorAll("#delete");
 
-const total = document.getElementById('totalPanier')
+const total = document.getElementById("totalPanier");
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-                                      // add Prod
-const nameProds = document.querySelectorAll('.name')
+// add Prod
+const nameProds = document.querySelectorAll(".name");
 const prix = document.querySelectorAll("p.prix span");
-const imgProds = document.querySelectorAll('.imgProd')
-              
-for (let i = 0; i < btnsAjout.length; i++) {
-//   const btnAjout = btnsAjout[i];
-//   const btnDel = btnsDel[i]
-
-//   const price = parseInt(prix[i].innerHTML)
-
-//   let getPrix = []
-// // *************************************************
-   
-//  // *************************************************
-//     function testou(e){
-//       value.push(price)
-//       calcul = value.reduce(reducer)
-//       localStorage.setItem('prix',value)
-//       getPrix = localStorage.getItem('prix')
-//       // console.log(getPrix);  
-//       console.log(parseInt(getPrix));
-//       total.innerHTML = 'total: '+ getPrix+ " €"  
-//     }
-//     // *************************************************
-//     function second(e) {
-//       if(calcul > 0){   
-        
-//           const sup = value.indexOf(price)
-//         console.log(sup);
-//         console.log(value);
-//           if(sup !== -1){         /* s'il detecte un nbr dans la chaine */
-//             value.splice(sup,1)
-            
-//             if(value.length === 0){         /* si value est vide */
-//               localStorage.setItem('prix',value)
-             
-//               total.innerHTML = 'total: '+ 0+ " €"
-
-//             }else if(value.length>0){       /* si value est remplie */
-
-//               localStorage.setItem('prix',value)
-
-//               getPrix = localStorage.getItem('prix')   
-
-//               total.innerHTML = 'total: '+ getPrix+ " €" 
-//             }
-//           }
-//         }
-//        else{
-//           localStorage.setItem('prix',value)
-//         console.log(value + "ici");
-//           total.innerHTML = 'total: '+ 0+ " €" 
-//         }
-      
-//     }
-
-    
-//   btnAjout.addEventListener('click',testou)
-//   btnDel.addEventListener('click',second)
-}
+const imgProds = document.querySelectorAll(".imgProd");
+let quantity = 0;
 
 // *****************************************************************************************************************************
-
+let paniers = [];
 
 for (let i = 0; i < btnsAjout.length; i++) {
-  const btnAjout = btnsAjout[i]
-  const btnDel = btnsDel[i]
+  const btnAjout = btnsAjout[i];
+  const btnDel = btnsDel[i];
   //                                      prods
-  const nameProd = nameProds[i].innerText
-  const imgProd = imgProds[i].currentSrc
-  const price = parseFloat(prix[i].innerText)
-  // console.log(btnDel.parentElement.children);
-const quantity = 0
-  const prod = [nameProd,imgProd,price,quantity]    /* produits */
-  console.log(prod);
+  const nameProd = nameProds[i].innerText;
+  const imgProd = imgProds[i].currentSrc;
+  const price = parseFloat(prix[i].innerText);
 
-  var ajj=()=>{
-    quantity++
-    localStorage.setItem(nameProd , prod)
-    console.log(nameProd);
-  }
-  var dell=()=>{
-    localStorage.removeItem(nameProd , prod)
-    console.log("del");
-  }
+  let prod = [nameProd, imgProd, price, quantity]; /* produits */
 
-  btnAjout.addEventListener('click',ajj)
-  btnDel.addEventListener('click',dell)
+  // *****************************************************************************************************************************
+  //                        ajout
+  var ajjST = () => {
+    //  add prod
+    console.log(quantity);
+    quantity++;
+    prod = [nameProd, imgProd, price, quantity];
+    prodJson = JSON.stringify(prod);
+    localStorage.setItem(nameProd, prodJson);
+    //   add panier
+    paniers.push(price);
+    localStorage.setItem("panier", JSON.stringify(paniers));
+    let panier = paniers.reduce(reducer);
+    //    push total
+    total.innerHTML = "total: " + panier + " €";
+  };
+  // ************************************************************
+  //                    suppresion
+  var dellST = () => {
+    quantity--;
+
+    if (quantity <= 0) {
+      quantity = 0;
+      prod = [nameProd, imgProd, price, quantity];
+      prodJson = JSON.stringify(prod);
+      localStorage.setItem(nameProd, prodJson);
+    } else {
+      prod = [nameProd, imgProd, price, quantity];
+      prodJson = JSON.stringify(prod);
+
+      localStorage.setItem(nameProd, prodJson);
+    }
+
+    //    push total
+    var del = paniers.indexOf(price);
+    if (del !== -1) {
+      paniers.splice(del, 1);
+      localStorage.setItem("panier", JSON.stringify(paniers));
+      if (paniers.length === 0) {
+        total.innerHTML = "total: " + 0 + " €";
+      } else {
+        let panier = paniers.reduce(reducer);
+        total.innerHTML = "total: " + panier + " €";
+      }
+    }
+
+  };
+  //************************************************************
+  //                    loading page
+  var totPanier = () => {
+    if (localStorage.getItem("panier")) {
+      paniers = JSON.parse(localStorage.getItem("panier"));
+      if (paniers.length === 0) {
+        total.innerHTML = "total: " + 0 + " €";
+      } else {
+        let panier = paniers.reduce(reducer);
+        total.innerHTML = "total: " + panier + " €";
+      }
+      produitPanier = JSON.parse(localStorage.getItem(nameProd));
+      if (produitPanier[3] !== 0) {
+        quantity = produitPanier[3];
+        console.log(quantity);
+      }
+    }
+  };
+  //************************************************************
+  //                    start
+  btnAjout.addEventListener("click", ajjST);
+  btnDel.addEventListener("click", dellST);
+  window.onload = totPanier();
 }
-
-
+//************************************************************
+//************************************************************
