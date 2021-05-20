@@ -1,39 +1,39 @@
+<% var idZero   = ID[0] %> 
+<% var idUn     = ID[1] %> 
+<% var idDeux   = ID[2] %> 
+<% var idTrois  = ID[3] %> 
+<% var idQuatre = ID[4] %> 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Orinoco</title>
     <link rel="stylesheet" href="/css/produit.css" />
-    <link rel="stylesheet" href="/css/header.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
-</head>
-<body> 
+
     <%- include('header'); -%>
     <main>
-        
-        <% var idZero   = ID[0] %> 
-        <% var idUn     = ID[1] %> 
-        <% var idDeux   = ID[2] %> 
-        <% var idTrois  = ID[3] %> 
-        <% var idQuatre = ID[4] %> 
         
         <% if(page ==="/"+ idZero ){ %><!-- if prod 1 -->
             <% var prix=(Math.round(produitZero.price) /100).toFixed(2); %>
             
         <section>
+            <h2 class="pasla">&#x2800;</h2>
             <ul class="chemain">
                 <li><a href="/">Caméras vintage</a></li>
-                <span>></span>
+                <li>&gt;</li>
                 <li><%= produitZero.name%></li>
             </ul>
         </section>
-        <h2 class="name"><%= produitZero.name %></h2>
+        
             <section>
+                <h2 class="name"><%= produitZero.name %></h2>
                 <article class="produit">
+                    <h2 class="pasla">&#x2800;</h2>
                     <div class="articleImg">
-                        <img class="imgProd"src=" <%=produitZero.imageUrl %>" alt="<%= produitZero.name%>" />                   
+                        <img class="imgProd" src=" <%=produitZero.imageUrl %>" alt="<%= produitZero.name%>" />                   
                     </div>
                     <div class="ficheProduit">
                         <div class="lenses">
@@ -50,214 +50,144 @@
                         </div>
                         <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
                         <p><b>Description :</b>  <br><%= produitZero.description %></p>
-
-                        
-                    </div>
-
-                    <button class="taste" type="button" id="ajoutPanier" value="" name="numb">
-                        + Panier
-                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
-                            class="caddie" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                            <path fill="currentColor"
-                                d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z">
-                            </path>
-                        </svg>
-                    </button>
-                    <button type="button" name="numb" id="delete"> 
-                                X
-                            </button>
-                    
-                </article>
-            </section>
         <%} %>
-
         <% if(page === "/"+ idUn ){ %><!-- if prod 2 -->
             <% var prix=(Math.round(produitUn.price) /100).toFixed(2); %>
-            <section>
-                <ul class="chemain">
-                    <li><a href="/">Caméras vintage</a></li>
-                    <span>></span>
-                    <li><%= produitUn.name%></li>
-                </ul>
-            </section>
+        <section>
+            <h2 class="pasla">&#x2800;</h2>
+            <ul class="chemain">
+                <li><a href="/">Caméras vintage</a></li>
+                <li>&gt;</li>
+                <li><%= produitUn.name%></li>
+            </ul>
+        </section>
+        
+        <section>
             <h2 class="name"><%= produitUn.name %></h2>
-                <section>
-                    <article class="produit">
-                        <div class="articleImg">
-                            <img class="imgProd"src=" <%=produitUn.imageUrl %>" alt="<%= produitUn.name%>" />                   
-                        </div>
-                        <div class="ficheProduit">
-                            <div class="lenses">
-                                <b>Lentilles :</b><p class="dot">  </p>
-                                <span class=""> 
-                                    
-                                    <select>
-                                        <% for( let i = 0; i < produitUn.lenses.length  ; i++ ) { %>
-                                        <%  %> 
-                                        <option value=""><%=produitUn.lenses[i] %></option>
-                                        <% } %>
-                                    </select>
-                                </span> 
-                            </div>
-                            <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
-                            <p><b>Description :</b>  <br><%= produitUn.description %></p>
-    
+            <article class="produit">
+                <h2 class="pasla">&#x2800;</h2>
+                <div class="articleImg">
+                    <img class="imgProd" src=" <%=produitUn.imageUrl %>" alt="<%= produitUn.name%>" />                   
+                </div>
+                <div class="ficheProduit">
+                    <div class="lenses">
+                        <b>Lentilles :</b><p class="dot">  </p>
+                        <span class=""> 
                             
-                        </div>
-    
-                        <button class="taste" type="button" id="ajoutPanier" value="" name="numb">
-                            + Panier
-                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
-                                class="caddie" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                <path fill="currentColor"
-                                    d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z">
-                                </path>
-                            </svg>
-                        </button>
-                        <button type="button" name="numb" id="delete"> 
-                                X
-                            </button>
-                        
-                    </article>
-                </section>
+                            <select>
+                                <% for( let i = 0; i < produitUn.lenses.length  ; i++ ) { %>
+                                <%  %> 
+                                <option value=""><%=produitUn.lenses[i] %></option>
+                                <% } %>
+                            </select>
+                        </span> 
+                    </div>
+                    <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
+                    <p><b>Description :</b>  <br><%= produitUn.description %></p>
         <%} %>
-
         <% if(page === "/"+ idDeux ){ %><!-- if prod 3 -->
             <% var prix=(Math.round(produitDeux.price) /100).toFixed(2); %>
         <section>
+            <h2 class="pasla">&#x2800;</h2>
             <ul class="chemain">
                 <li><a href="/">Caméras vintage</a></li>
-                <span>></span>
+                <li>&gt;</li>
                 <li><%= produitDeux.name%></li>
             </ul>
         </section>
-        <h2 class="name"><%= produitDeux.name %></h2>
-            <section>
-                <article class="produit">
-                    <div class="articleImg">
-                        <img class="imgProd"src=" <%=produitDeux.imageUrl %>" alt="<%= produitDeux.name%>" />                   
+        
+        <section>
+            <h2 class="name"><%= produitDeux.name %></h2>
+            <article class="produit">
+                <h2 class="pasla">&#x2800;</h2>
+                <div class="articleImg">
+                    <img class="imgProd" src=" <%=produitDeux.imageUrl %>" alt="<%= produitDeux.name%>" />                   
+                </div>
+                <div class="ficheProduit">
+                    <div class="lenses">
+                        <b>Lentilles :</b><p class="dot">  </p>
+                        <span class=""> 
+                            
+                            <select>
+                                <% for( let i = 0; i < produitDeux.lenses.length  ; i++ ) { %>
+                                <%  %> 
+                                <option value=""><%=produitDeux.lenses[i] %></option>
+                                <% } %>
+                            </select>
+                        </span> 
                     </div>
-                    <div class="ficheProduit">
-                        <div class="lenses">
-                            <b>Lentilles :</b><p class="dot">  </p>
-                            <span class=""> 
-                                
-                                <select>
-                                    <% for( let i = 0; i < produitDeux.lenses.length  ; i++ ) { %>
-                                    <%  %> 
-                                    <option value=""><%=produitDeux.lenses[i] %></option>
-                                    <% } %>
-                                </select>
-                            </span> 
-                        </div>
-                        <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
-                        <p><b>Description :</b>  <br><%= produitDeux.description %></p>
-
-                        
-                    </div>
-
-                    <button class="taste" type="button" id="ajoutPanier" value="" name="numb">
-                        + Panier
-                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
-                            class="caddie" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                            <path fill="currentColor"
-                                d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z">
-                            </path>
-                        </svg>
-                    </button>
-                    <button type="button" name="numb" id="delete"> 
-                                X
-                            </button>
-                    
-                </article>
-            </section>
+                    <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
+                    <p><b>Description :</b>  <br><%= produitDeux.description %></p>          
         <%} %>
-
         <% if(page === "/"+ idTrois ){ %><!-- if prod 4 -->
             <% var prix=(Math.round(produitTrois.price) /100).toFixed(2); %>
         <section>
+            <h2 class="pasla">&#x2800;</h2>
             <ul class="chemain">
                 <li><a href="/">Caméras vintage</a></li>
-                <span>></span>
+                <li>&gt;</li>
                 <li><%= produitTrois.name%></li>
             </ul>
         </section>
-        <h2 class="name"><%= produitTrois.name %></h2>
-            <section>
-                <article class="produit">
-                    <div class="articleImg">
-                        <img class="imgProd"src=" <%=produitTrois.imageUrl %>" alt="<%= produitTrois.name%>" />                   
+        
+        <section>
+            <h2 class="name"><%= produitTrois.name %></h2>
+            <article class="produit">
+                <h2 class="pasla">&#x2800;</h2>
+                <div class="articleImg">
+                    <img class="imgProd" src=" <%=produitTrois.imageUrl %>" alt="<%= produitTrois.name%>" />                   
+                </div>
+                <div class="ficheProduit">
+                    <div class="lenses">
+                        <b>Lentilles :</b><p class="dot">  </p>
+                        <span class=""> 
+                            
+                            <select>
+                                <% for( let i = 0; i < produitTrois.lenses.length  ; i++ ) { %>
+                                <%  %> 
+                                <option value=""><%=produitTrois.lenses[i] %></option>
+                                <% } %>
+                            </select>
+                        </span> 
                     </div>
-                    <div class="ficheProduit">
-                        <div class="lenses">
-                            <b>Lentilles :</b><p class="dot">  </p>
-                            <span class=""> 
-                                
-                                <select>
-                                    <% for( let i = 0; i < produitTrois.lenses.length  ; i++ ) { %>
-                                    <%  %> 
-                                    <option value=""><%=produitTrois.lenses[i] %></option>
-                                    <% } %>
-                                </select>
-                            </span> 
-                        </div>
-                        <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
-                        <p><b>Description :</b>  <br><%= produitTrois.description %></p>
-
-                        
-                    </div>
-
-                    <button class="taste" type="button" id="ajoutPanier" value="" name="numb">
-                        + Panier
-                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
-                            class="caddie" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                            <path fill="currentColor"
-                                d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z">
-                            </path>
-                        </svg>
-                    </button>
-                    <button type="button" name="numb" id="delete"> 
-                                X
-                            </button>
-                    
-                </article>
-            </section>
+                    <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
+                    <p><b>Description :</b>  <br><%= produitTrois.description %></p>
         <%} %>
-
         <% if(page === "/"+ idQuatre ){ %><!-- if prod 5 -->
             <% var prix=(Math.round(produitQuatre.price) /100).toFixed(2); %>
         <section>
+            <h2 class="pasla">&#x2800;</h2>
             <ul class="chemain">
                 <li><a href="/">Caméras vintage</a></li>
-                <span>></span>
+                <li>&gt;</li>
                 <li><%= produitQuatre.name%></li>
             </ul>
         </section>
-        <h2 class="name"><%= produitQuatre.name %></h2>
-            <section>
-                <article class="produit">
-                    <div class="articleImg">
-                        <img class="imgProd"src=" <%=produitQuatre.imageUrl %>" alt="<%= produitQuatre.name%>" />                   
+        
+        <section>
+            <h2 class="name"><%= produitQuatre.name %></h2>
+            <article class="produit">
+                <h2 class="pasla">&#x2800;</h2>
+                <div class="articleImg">
+                    <img class="imgProd" src=" <%=produitQuatre.imageUrl %>" alt="<%= produitQuatre.name%>" />                   
+                </div>
+                <div class="ficheProduit">
+                    <div class="lenses">
+                        <b>Lentilles :</b><p class="dot">  </p>
+                        <span class=""> 
+                            
+                            <select>
+                                <% for( let i = 0; i < produitQuatre.lenses.length  ; i++ ) { %>
+                                <%  %> 
+                                <option value=""><%=produitQuatre.lenses[i] %></option>
+                                <% } %>
+                            </select>
+                        </span> 
                     </div>
-                    <div class="ficheProduit">
-                        <div class="lenses">
-                            <b>Lentilles :</b><p class="dot">  </p>
-                            <span class=""> 
-                                
-                                <select>
-                                    <% for( let i = 0; i < produitQuatre.lenses.length  ; i++ ) { %>
-                                    <%  %> 
-                                    <option value=""><%=produitQuatre.lenses[i] %></option>
-                                    <% } %>
-                                </select>
-                            </span> 
-                        </div>
-                        <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
-                        <p><b>Description :</b>  <br><%= produitQuatre.description %></p>
-
-                        
-                    </div>
-
+                    <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
+                    <p><b>Description :</b>  <br><%= produitQuatre.description %></p>
+        <%} %>
+                </div>
                     <button class="taste" type="button" id="ajoutPanier" value="" name="numb">
                         + Panier
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
@@ -269,13 +199,10 @@
                     </button>
                     <button type="button" name="numb" id="delete"> 
                                 X
-                            </button>
+                    </button>
                     
-                    
-                </article>
-                
-            </section>
-        <%} %>
+            </article>
+        </section>
     </main>
-    <script src="/api.js"></script> 
+    <script src="/api.js"></script>
   <%- include('footer'); -%>

@@ -85,15 +85,12 @@ app.get("/panier", function (req, res) {
   res.render("panier");
 })
 
-app.post("/order", function (req, res,body) {
-  var facture =(req.body)
-  var factureProds= JSON.parse(facture.produits)
-  console.log(req.body);  
-  res.render("post",{facture,factureProds});
-
+app.get('/facture',function (req, res) {
+  res.render("facture")
 })
-
 
 // ***************************************************************************************
 
 module.exports = app;
+
+

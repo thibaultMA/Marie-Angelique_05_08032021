@@ -4,10 +4,18 @@ const total = document.getElementById("totalPanier");
 //          valide panier
 const submit = document.getElementById("submit");
 let paniers = JSON.parse(localStorage.getItem("panier"));
-let panier = paniers.reduce(reducer);
+let panier = 0;
+if (paniers != null) {
+  panier = paniers.reduce(reducer);
+}
+              // title
+document.title = "Orinoco | Panier"
+let = products = [];
 
 var totPanier = () => {
-  if (localStorage.getItem("panier")) {
+
+      
+  if (localStorage.getItem("panier") != null) {
     if (paniers.length === 0) {
       total.innerHTML = "total: " + 0 + " €";
     } else {
@@ -15,13 +23,14 @@ var totPanier = () => {
     }
   }
 
-  //                          fin load
-  //                          debut affiche panier complet
+                          //   fin load tot panier
+
+                          //   debut affiche panier complet
   let tbody = document.getElementById("tbody");
 
   for (let i = 0; i < localStorage.length; i++) {
     const u = localStorage.key(i);
-    if (u != "panier") {
+    if (u != "panier" && u != "order" && u!="date") {
       const prod = JSON.parse(localStorage[u]);
 
       const prodList = document.createElement("tr");
@@ -52,10 +61,11 @@ var totPanier = () => {
         const specQuantity = document.createElement("td");
         const select = document.createElement("select");
         select.classList.add("select");
-        for (let n = 0; n < prodQuantity + 10; n++) {
+        for (let n = 0; n < prodQuantity + 5; n++) {
           const option = document.createElement("option");
           option.value = n;
           option.innerHTML = n;
+
           select.appendChild(option);
         }
 
@@ -83,56 +93,100 @@ var totPanier = () => {
 
   tbody.appendChild(totalTr);
 
-
   //          formulaire
-  //          ajout panier
-
-  let = listeProd = [];
+  //          ajout obj products
 
   for (let i = 0; i < localStorage.length; i++) {
     const u = localStorage.key(i);
 
-    if (u != "panier") {
+    if (u != "panier" && u != "order" && u!="date") {
       const prods = JSON.parse(localStorage[u]);
+
       let quantity = prods[3];
+      let id = prods[4];
+
       for (let i = 0; i < quantity; i++) {
-        listeProd.push(prods);
-        prods[3]--;
+        products.push(id);
+
+        prods[0]--;
       }
-      prods.pop();
     }
   }
-  const inputPanier = document.getElementById("hidden");
-  inputPanier.value=JSON.stringify(listeProd) 
+  console.log(products);
 };
+          //check panier
+let panierCheck = products
+
+
 
 // ajout info client
 
-const clform = document.forms["po"];
-var contact
+const clform = document.forms[0];
+const POSTFORM = document.getElementById("POSTFORM");
+
+
 
 clform.addEventListener("submit", (e) => {
-  e.preventDefault()
-  var firstName =    clform.firstName.value
-  var lastName  =   clform.lastName.value
-  var address   =   clform.address.value
-  var city      =   clform.city.value
-  var email     =   clform.email.value
+  e.preventDefault();
+  let panierCheck = products
 
-  contact = {
-    firstName:firstName,
-    lastName:lastName  ,
-    address:address    ,
-    city:city          ,
-    email:email        ,
+
+  var firstName = clform.firstName.value;
+  var lastName = clform.lastName.value;
+  var address = clform.address.value;
+  var city = clform.city.value;
+  var email = clform.email.value;
+
+  console.log(firstName);
+
+  var contact = {
+    firstName: firstName,
+    lastName: lastName,
+    address: address,
+    city: city,
+    email: email,
+  };
+  let body = {
+    contact,
+    products,
+  };
+
+  let objetJson = JSON.stringify(body);
+
+
+                          // add date Ls
+const date = new Date()
+  let nowDate = JSON.stringify({
+    date:date.toLocaleDateString(),
+    hour:{
+      heure:date.getHours() , minutes:date.getMinutes(),
+    }
+    
+  })
+  
+
+                                        // POST!
+  if (1 == 1) {
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://localhost:3000/api/cameras/order");
+    request.setRequestHeader("Content-Type", "application/json")
+    request.onreadystatechange = () => {
+      if (request.readyState == XMLHttpRequest.DONE) {
+        console.log(request.responseText);
+        localStorage.clear()
+        localStorage.setItem("order", request.responseText);
+              // date
+        localStorage.setItem("date",nowDate);
+        // window.location.href = "/facture"
+      }
+    };
+
+    request.send(objetJson);
+  } else {
+    console.log("Administration : ERROR");
   }
-  // post()
-  console.log(contact);
-
-localStorage.clear()
-console.log(localStorage.length);
-}); 
-
-
+  
+});
 
 window.onload = totPanier();
+

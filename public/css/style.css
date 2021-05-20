@@ -36,22 +36,22 @@ main .titre{
 .produit .infoProduit{
     padding: 5px;
 }
-#ajoutPanier{
+.ajoutPanier{
     background: none;
     border: solid red;
     cursor: pointer;
 }
 
-#ajoutPanier .caddie{
+.ajoutPanier .caddie{
     width: 20px;
     vertical-align: middle;
 }
-#ajoutPanier:hover{
+.ajoutPanier:hover{
     transition: 0.5s;
     background: red;
     color: white;
 }
-#ajoutPanier:hover .caddie{
+.ajoutPanier:hover .caddie{
     fill: white;
 }
 @media screen and (min-width:596px){

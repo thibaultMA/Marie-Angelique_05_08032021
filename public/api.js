@@ -9,6 +9,8 @@ const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const nameProds = document.querySelectorAll(".name");
 const prix = document.querySelectorAll("p.prix span");
 const imgProds = document.querySelectorAll(".imgProd");
+const ID = document.URL.replace('http://localhost:3000/',"");
+
 let quantity = 0;
 
 // *****************************************************************************************************************************
@@ -24,13 +26,18 @@ for (let i = 0; i < btnsAjout.length; i++) {
 
   let prod = [nameProd, imgProd, price, quantity]; /* produits */
 
+            // quantity dinamique
+  if (localStorage.getItem(nameProd) != null) {
+    quantity = JSON.parse(localStorage.getItem(nameProd))[3]
+  }
   // *****************************************************************************************************************************
   //                        ajout
   var ajjST = () => {
     //  add prod
-    console.log(quantity);
+
+
     quantity++;
-    prod = [nameProd, imgProd, price, quantity];
+    prod = [nameProd, imgProd, price, quantity,ID];
     prodJson = JSON.stringify(prod);
     localStorage.setItem(nameProd, prodJson);
     //   add panier
@@ -43,15 +50,16 @@ for (let i = 0; i < btnsAjout.length; i++) {
   // ************************************************************
   //                    suppresion
   var dellST = () => {
+
     quantity--;
 
     if (quantity <= 0) {
       quantity = 0;
-      prod = [nameProd, imgProd, price, quantity];
+      prod = [nameProd, imgProd, price, quantity,ID];
       prodJson = JSON.stringify(prod);
       localStorage.setItem(nameProd, prodJson);
     } else {
-      prod = [nameProd, imgProd, price, quantity];
+      prod = [nameProd, imgProd, price, quantity,ID];
       prodJson = JSON.stringify(prod);
 
       localStorage.setItem(nameProd, prodJson);
@@ -82,18 +90,23 @@ for (let i = 0; i < btnsAjout.length; i++) {
         let panier = paniers.reduce(reducer);
         total.innerHTML = "total: " + panier + " €";
       }
-      produitPanier = JSON.parse(localStorage.getItem(nameProd));
-      if (produitPanier[3] !== 0) {
-        quantity = produitPanier[3];
-        console.log(quantity);
+      let produitPanier = JSON.parse(localStorage.getItem(nameProd));
+      if (produitPanier === true) {
+        if (produitPanier[3] !== 0) {
+          quantity = produitPanier[3];
+        }
       }
+      
     }
+    document.title = "Orinoco | " +document.querySelector('h2.name').innerHTML
   };
   //************************************************************
   //                    start
-  btnAjout.addEventListener("click", ajjST);
-  btnDel.addEventListener("click", dellST);
   window.onload = totPanier();
+  btnAjout.addEventListener("click", ajjST);
+  
+  btnDel.addEventListener("click", dellST);
+  
 }
 //************************************************************
 //************************************************************
