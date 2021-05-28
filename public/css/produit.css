@@ -2,7 +2,8 @@ body{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: #B0D9D1;
+    background: #bebebe;
+    height: 100%;
 }
 .chemain{
     list-style: none;
@@ -20,27 +21,37 @@ body{
                     /* fin chemain */
 
                     /* produit */
+.name{
+    text-align: center;
+}
 .produit{
-    margin: 7px;
+    margin: 7px auto 100px;
     padding: 5px;
-    border: solid 1px;
+    background: #FFF;
     display: flex;
-    flex-flow: wrap;
+    flex-flow: row;
+    width: 50%;
+    justify-content: space-evenly;
 }                    
 .articleImg{
     margin: 5px;
-    
+    width: 75%;
 }
 .articleImg img{
-    object-fit: cover;
-    width:100% ;
+width: 100%;
+object-fit: cover;
 }
 .ficheProduit{
-display: block;
+    width: 25%;
+display: flex;
+flex-flow: column;
+}
+.ficheProduit b{
+    padding-left: 10px;
 }
 .lenses{
-   display: inline-flex;
-   
+    display: inline-flex;
+    justify-content: space-between;
 }
 .lenses span{
     display: inline;
@@ -61,12 +72,19 @@ display: block;
 
                     debut description*/
 
-                    /* fin description
-
+                    /* fin description 
+                    debut select */
+#select{
+    align-self: flex-end;
+    margin-bottom: 10px;
+}
+                     /*fin select
                     debut bouton*/
 #ajoutPanier{
     background: none;
-    border: solid red;
+    /* border: solid red 1px; */
+    border: solid rgb(219, 219, 219) 1px;;
+    box-shadow: 0px 2px 5px #555555;
     cursor: pointer;
 }
 
@@ -75,10 +93,41 @@ display: block;
     vertical-align: middle;
 }
 #ajoutPanier:hover{
-    transition: 0.5s;
-    background: red;
-    color: white;
+    transition: 0.3s;
+    box-shadow:0px 3px 5px 1px #555555;
+    
 }
 #ajoutPanier:hover .caddie{
     fill: white;
+}
+@media screen and (max-width:1779px) {
+   .produit{
+       flex-flow: column;
+   }
+   .articleImg{
+       width:unset;
+   }
+   .ficheProduit{
+    width: 74%;
+    margin: auto;   
+    }
+    #select{
+        align-self: flex-start;
+        margin-left: 13%;
+    }
+    #ajoutPanier{
+        margin: auto auto 20px;
+        width: fit-content;
+    }
+}
+@media screen and (max-width:839px){
+    .produit{
+        width: 65%;
+    }
+}
+@media screen and (max-width:375px){
+    .lenses{
+        flex-flow: column;
+        align-items: center;
+    }
 }

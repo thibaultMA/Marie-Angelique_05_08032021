@@ -5,78 +5,148 @@ body{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: #B0D9D1;
+    background: #bebebe;
+    height: 100%;
 }
 main .titrePage{
     text-align: center;
 }
 main .titre{
     text-align: center;
+   
+}
+.mainDeux{
+    display: flex;
+    max-width: 1920px;
+    margin: auto;
+}
+aside{
+    background: #FFF;
+    width: 13%;
+    min-width: 150px;
+}
+aside ul {
+    margin: 0;padding: 0;
+}
+aside ul li{
+    list-style: none;
+    background: #FFF;
+    padding:  7px  0 7px 23px;
+    border-bottom: 1px solid #c5c5c5;
+    border-top: 1px solid #c5c5c5;
+}
+aside ul li:nth-child(3){
+    padding: 13px 0 13px  23px ;
+}
+
+aside ul li:nth-child(n+4){
+    padding-left: 21%;
+}
+aside ul li:nth-child(n+4):hover,
+aside ul li:nth-child(-n+2):hover{
+    background: rgb(194, 194, 194);
+    font-size: 19px;
+    transition: 0.2s;
 }
 .rayon{
     display: flex;
-    flex-flow: column;
-    align-items: center;
+    justify-content: space-between;
+    
+    flex-flow: row wrap;
+
+    align-items: flex-start;
 }
+
 .produit {
-    width: 80%;
-    margin:20px 0 ;
-    border: black solid 2px;
+    width: 20%;
+    margin: 20px 14px;
+    max-width: 350px;
+    min-width: 250px;
     border-radius: 15px;
-    background: #04ADBF;
-    /* color: white; */
+    background: #FFF;
+    box-shadow:5px 2px 5px #a7a7a7;
 }
 .produit img{
-    object-fit: cover;
+    object-fit:cover;
+    object-position: center;
     width: 100%;
+    height:181px ;
     border-top-right-radius: 11px;
     border-top-left-radius: 11px;
-
 }
 .produit .infoProduit{
     padding: 5px;
+    display: flex;
+    flex-flow: column;
+}
+.infoProduit p,
+.name {
+    margin: 5px;
 }
 .ajoutPanier{
     background: none;
-    border: solid red;
+    color: #575757;
+    font-style: italic;
     cursor: pointer;
+    text-align: right;
 }
 
 .ajoutPanier .caddie{
     width: 20px;
+    
     vertical-align: middle;
 }
 .ajoutPanier:hover{
-    transition: 0.5s;
-    background: red;
-    color: white;
+    transition: 0.2s;
+
+    color: #ff0000;
 }
 .ajoutPanier:hover .caddie{
     fill: white;
 }
-@media screen and (min-width:596px){
-    .rayon{
-        flex-flow: row wrap;
-        justify-content: space-around;
-        align-items: flex-start;
-    }
-    .produit{
-        width: 45%;
-        margin:20px auto;
-    }
+.menu{
+    display: none;
 }
-@media screen and (min-width:1024px){
+@media screen and (max-width:1702px){
     .rayon{
         justify-content: center;
     }
+}
+
+@media screen and (max-width:722px) {
     .produit{
-        width: 30%;
-        margin: 20px 14px;
-        max-width: 350px;
+width: 80%;
     }
 }
-@media screen and (min-width:1422px){
-    .produit{
-        margin: 20px 50px;
+
+@media screen and (max-width:596px) {
+    .mainDeux{
+        z-index: 1;
+    }
+    aside{
+        display: none;
+        height:auto;
+        position: absolute;
+        z-index: 8;
+    }
+    .after{
+        display: none;
+        background: #000;
+        opacity: 40%;
+        position: absolute;
+        width: 100%;
+        height: 2158px;
+        z-index: 5;
+    }
+    .menu{
+        display: block;
+        cursor: pointer;
+        width: 50px;
+        position: absolute;
+    }
+    
+}@media screen and (max-width:407px){
+    .after{
+        height: 2248px;
     }
 }

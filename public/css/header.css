@@ -1,18 +1,22 @@
-
-.top{
+header{
     width: 100%;
+    background: #486377;
+}
+#top{
+    width: 100%;
+    max-width: 1920px;
     display: flex;
     justify-content: center;
-    background: #03738C;
+    margin: auto;
     position: relative;
-    border-bottom: solid 1px;
     
 }
-header .hover  {
-
-    margin: auto;
+#svg{
+    height: 26px;
+    fill: white;
 }
-header img {
+
+#top img {
     width: 89%;
 }
 .nav{
@@ -33,16 +37,14 @@ header img {
     display: inline-block;
 }
 
-#menu-deroulant .hover {
-    text-decoration: none;
-	color:rgb(255, 255, 255);
-}
+
 #menu-deroulant ul {
     position: absolute;
     display: none;
-    
 }
+
 #menu-deroulant li:hover ul{
+
     display: block;
     width: 200px;
     height: 200px;
@@ -51,6 +53,7 @@ header img {
     position: absolute;
     right: 10px;
     background: white;
+    
 
 }
 .panier{
@@ -71,20 +74,16 @@ header img {
     text-align: center;
     justify-self: flex-end;
 }
-tbody img{
-    object-fit: contain;
-    width : 100%;
-}
 .pasla{
     display: none;
 }
 @media screen and (min-width:596px){
-    .top{
-        height: 134px;
+    #top{
+        height: 65px;
     }
-    header .hover,
-    header img{
-        height: 100%;
+    #top .hover,
+    #top img{
+        height: 123%;
         width: auto;
     }
 }

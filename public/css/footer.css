@@ -1,17 +1,15 @@
-footer{
-    
-        width: 100%;
-        display: flex;
-        
-        background: #03738C;
-        position: relative;
-        border-bottom: solid 1px;
-        
-    
-}
-
 a{
     text-decoration: none;
-    color: #000;
-
+  color: black;
 }
+
+footer{
+    padding: 0;margin: 0;
+        width: 100%;
+        display: flex;
+        background: #292929;
+}
+footer *{
+    color: white;
+}
+

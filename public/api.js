@@ -1,7 +1,7 @@
 // add panier
 const btnsAjout = document.querySelectorAll("#ajoutPanier");
-const btnsDel = document.querySelectorAll("#delete");
-
+const select = document.querySelector("#select")
+//        total panier
 const total = document.getElementById("totalPanier");
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
@@ -11,20 +11,21 @@ const prix = document.querySelectorAll("p.prix span");
 const imgProds = document.querySelectorAll(".imgProd");
 const ID = document.URL.replace('http://localhost:3000/',"");
 
-let quantity = 0;
+let quantity = select.selectedIndex +1;
+
 
 // *****************************************************************************************************************************
 let paniers = [];
 
 for (let i = 0; i < btnsAjout.length; i++) {
   const btnAjout = btnsAjout[i];
-  const btnDel = btnsDel[i];
+
   //                                      prods
   const nameProd = nameProds[i].innerText;
   const imgProd = imgProds[i].currentSrc;
   const price = parseFloat(prix[i].innerText);
 
-  let prod = [nameProd, imgProd, price, quantity]; /* produits */
+  let prod = [nameProd, imgProd, price, quantity,ID]; /* produits */
 
             // quantity dinamique
   if (localStorage.getItem(nameProd) != null) {
@@ -35,69 +36,42 @@ for (let i = 0; i < btnsAjout.length; i++) {
   var ajjST = () => {
     //  add prod
 
-
-    quantity++;
     prod = [nameProd, imgProd, price, quantity,ID];
     prodJson = JSON.stringify(prod);
     localStorage.setItem(nameProd, prodJson);
     //   add panier
-    paniers.push(price);
-    localStorage.setItem("panier", JSON.stringify(paniers));
-    let panier = paniers.reduce(reducer);
+    const totProd = JSON.parse(localStorage[nameProd]);
+        paniers.push(totProd[2]*totProd[3])
+    let prixPanier = paniers.reduce(reducer)
     //    push total
-    total.innerHTML = "total: " + panier + " €";
+    total.innerHTML = "total: " + prixPanier + " €";
+    window.location.href = '/panier'
   };
-  // ************************************************************
-  //                    suppresion
-  var dellST = () => {
 
-    quantity--;
-
-    if (quantity <= 0) {
-      quantity = 0;
-      prod = [nameProd, imgProd, price, quantity,ID];
-      prodJson = JSON.stringify(prod);
-      localStorage.setItem(nameProd, prodJson);
-    } else {
-      prod = [nameProd, imgProd, price, quantity,ID];
-      prodJson = JSON.stringify(prod);
-
-      localStorage.setItem(nameProd, prodJson);
-    }
-
-    //    push total
-    var del = paniers.indexOf(price);
-    if (del !== -1) {
-      paniers.splice(del, 1);
-      localStorage.setItem("panier", JSON.stringify(paniers));
-      if (paniers.length === 0) {
-        total.innerHTML = "total: " + 0 + " €";
-      } else {
-        let panier = paniers.reduce(reducer);
-        total.innerHTML = "total: " + panier + " €";
-      }
-    }
-
-  };
   //************************************************************
   //                    loading page
   var totPanier = () => {
-    if (localStorage.getItem("panier")) {
-      paniers = JSON.parse(localStorage.getItem("panier"));
-      if (paniers.length === 0) {
-        total.innerHTML = "total: " + 0 + " €";
-      } else {
-        let panier = paniers.reduce(reducer);
-        total.innerHTML = "total: " + panier + " €";
+    for (let i = 0; i < localStorage.length; i++) {
+      const u = localStorage.key(i);
+  
+      if (u != "panier" && u != "order" && u!="date") {
+        const totProd = JSON.parse(localStorage[u]);
+        paniers.push(totProd[2]*totProd[3])
+        
       }
-      let produitPanier = JSON.parse(localStorage.getItem(nameProd));
-      if (produitPanier === true) {
-        if (produitPanier[3] !== 0) {
-          quantity = produitPanier[3];
-        }
-      }
-      
+    }  
+    if (paniers.length != 0) {
+      let prixPanier = paniers.reduce(reducer)
+    console.log(prixPanier);
+    total.innerHTML = "total: " + prixPanier + " €";
     }
+    
+    // if(localStorage.getItem(nameProd) != null){
+    //   let totProd = JSON.parse(localStorage.getItem(nameProd))
+    //   
+      
+    // }
+    
     document.title = "Orinoco | " +document.querySelector('h2.name').innerHTML
   };
   //************************************************************
@@ -105,8 +79,16 @@ for (let i = 0; i < btnsAjout.length; i++) {
   window.onload = totPanier();
   btnAjout.addEventListener("click", ajjST);
   
-  btnDel.addEventListener("click", dellST);
-  
+  select.addEventListener('change',()=>{
+    quantity= select.selectedIndex +1
+    prod = [nameProd, imgProd, price, quantity,ID];
+    localStorage.setItem(nameProd,JSON.stringify(prod))
+    console.log(prod);
+   })
 }
+                      // fin boule btn
+    // options select
+    document.querySelectorAll('.options')[0].setAttribute('selected',"true") 
+
 //************************************************************
 //************************************************************

@@ -3,7 +3,7 @@
 <% var idDeux   = ID[2] %> 
 <% var idTrois  = ID[3] %> 
 <% var idQuatre = ID[4] %> 
-
+<% var select = "selected" %> 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -40,7 +40,7 @@
                             <b>Lentilles :</b><p class="dot">  </p>
                             <span class=""> 
                                 
-                                <select>
+                                <select class="selectLenses">
                                     <% for( let i = 0; i < produitZero.lenses.length  ; i++ ) { %>
                                     <%  %> 
                                     <option value=""><%=produitZero.lenses[i] %></option>
@@ -74,7 +74,7 @@
                         <b>Lentilles :</b><p class="dot">  </p>
                         <span class=""> 
                             
-                            <select>
+                            <select class="selectLenses">
                                 <% for( let i = 0; i < produitUn.lenses.length  ; i++ ) { %>
                                 <%  %> 
                                 <option value=""><%=produitUn.lenses[i] %></option>
@@ -108,7 +108,7 @@
                         <b>Lentilles :</b><p class="dot">  </p>
                         <span class=""> 
                             
-                            <select>
+                            <select class="selectLenses">
                                 <% for( let i = 0; i < produitDeux.lenses.length  ; i++ ) { %>
                                 <%  %> 
                                 <option value=""><%=produitDeux.lenses[i] %></option>
@@ -142,7 +142,7 @@
                         <b>Lentilles :</b><p class="dot">  </p>
                         <span class=""> 
                             
-                            <select>
+                            <select class="selectLenses">
                                 <% for( let i = 0; i < produitTrois.lenses.length  ; i++ ) { %>
                                 <%  %> 
                                 <option value=""><%=produitTrois.lenses[i] %></option>
@@ -176,20 +176,31 @@
                         <b>Lentilles :</b><p class="dot">  </p>
                         <span class=""> 
                             
-                            <select>
+                            <select class="selectLenses">
                                 <% for( let i = 0; i < produitQuatre.lenses.length  ; i++ ) { %>
-                                <%  %> 
-                                <option value=""><%=produitQuatre.lenses[i] %></option>
+                                
+                                <option value="<%= i %> "><%=produitQuatre.lenses[i] %></option>
                                 <% } %>
                             </select>
                         </span> 
                     </div>
                     <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
                     <p><b>Description :</b>  <br><%= produitQuatre.description %></p>
-        <%} %>
-                </div>
+        <% } %>
+                
+                    
+                    
+                    <p><b>quantité : </b></p>
+                    <select name="quantity" id="select">
+                        <% for (let i = 1; i < 6; i++) { %>
+                        <option value="<%= i %> " class="options">
+                            <%= i %> 
+                        </option>
+                            
+                        <%} %>  
+                    </select>
                     <button class="taste" type="button" id="ajoutPanier" value="" name="numb">
-                        + Panier
+                        Ajouté au panier
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
                             class="caddie" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                             <path fill="currentColor"
@@ -197,10 +208,7 @@
                             </path>
                         </svg>
                     </button>
-                    <button type="button" name="numb" id="delete"> 
-                                X
-                    </button>
-                    
+                </div>
             </article>
         </section>
     </main>

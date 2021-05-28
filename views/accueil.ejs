@@ -11,58 +11,87 @@
     <%- include('header'); -%>
         <!-- main -->
         <main>
-            <h1 class="titre">Caméras vintage</h1>
-            <section class="rayon">
-                <h2 class="pasla">&#x2800;</h2>
-                <% for (let i=0; i < produits.length; i++) { /* for produits */%>
-                    <% var prix=(Math.round(produits[i].price) /100).toFixed(2); %>
+            
+            <div class="mainDeux">
+                <div class="after"></div>
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="menu" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path>
+                </svg>
+                <aside class="side">
+                    <ul>
+                        <li><a href="/">acceuil</a></li>
+                        <li><a href="/panier">Votre panier</a></li>
+                        <li>Caméras vintage: </li>
+                        <li><a href="/5be1ed3f1c9d44000030b061">Zurss 50S</a></li>
+                        <li><a href="/5be1ef211c9d44000030b062">Hirsch 400DTS</a></li>
+                        <li><a href="/5be9bc241c9d440000a730e7">Franck JS 105</a></li>
+                        <li><a href="/5be9c4471c9d440000a730e8"> Kuros TTS</a></li>
+                        <li><a href="/5be9c4c71c9d440000a730e9">Katatone </a></li>
+                    </ul>
+                </aside>
+                <div>
+                <h1 class="titre">Caméras vintage</h1>
+                <section class="rayon">
+                    <h2 class="pasla">&#x2800;</h2>
+                    <% for (let i=0; i < produits.length; i++) { /* for produits */%>
+                        <% var prix=(Math.round(produits[i].price) /100).toFixed(2); %>
 
 
-                <article class="produit">
-                    <a href="/<%=produits[i]._id %>">
-                        <img class="imgProd" src=" <%=produits[i].imageUrl %>" alt="<%= produits[i].name%>" />
-                    </a>
-                    <div class="infoProduit">
-                        <h3 class="name">Nom : <%= produits[i].name%>
-                        </h3>
-                        <p class="prix">Prix :
-                            <span>
-                                        <%= prix %>
-                            </span> €
-                         </p>
-
-                        <p class="description">
-                            <%= produits[i].description %>
-                        </p>
-
-                        <a href="/<%=produits[i]._id %>" class="ajoutPanier">
-                            plus d'info
-
+                    <article class="produit">
+                        <a href="/<%=produits[i]._id %>" class="lienProd">
+                            <img class="imgProd<% if (i===1) {%> covLeft <%}%> "src=" <%=produits[i].imageUrl %>" alt="<%= produits[i].name%>"   />
                         </a>
-                    </div>
-                </article>
-                <% } %>
+                        <div class="infoProduit">
+                            <h3 class="name"> <%= produits[i].name%>
+                            </h3>
+                            <p class="prix">Prix :
+                                <span>
+                                            <%= prix %>
+                                </span> €
+                            </p>
 
-                            <!-- fin for -->
-            </section>
+                            <p class="description">
+                                <%= produits[i].description %>
+                            </p>
+
+                            <a href="/<%=produits[i]._id %>" class="ajoutPanier">
+                                plus d'info &#x2192;
+
+                            </a>
+                        </div>
+                    </article>
+                    <% } %>
+
+                                <!-- fin for -->
+                </section>
+                </div>
+            </div>
+
         </main>
         <script>
             const reducer = (accumulator, currentValue) => accumulator + currentValue;
-            const total = document.querySelectorAll("totalPanier");
+            const total = document.querySelector("#totalPanier");
+            const menu = document.querySelector(".menu")
+            let aside = document.querySelector(".side")
+            let after = document.querySelector(".after")
+            let totP = []
 
-            var totPanier = () => {
-                if (localStorage.getItem("panier")) {
+            for (let i = 0; i < localStorage.length; i++) {
+            const u = localStorage.key(i);
 
-                    let paniers = JSON.parse(localStorage.getItem("panier"));
-                    if (paniers.length === 0) {
-                        total.innerHTML = "total: " + 0 + " €";
-                    } else {
-                        let panier = paniers.reduce(reducer);
-                        total.innerHTML = "total: " + panier + " €";
-                    }
+                if (u != "panier" && u != "order" && u!="date") {
+                const prods = JSON.parse(localStorage[u]);
+                totP.push(prods[2]*prods[3])
+                total.innerHTML = "total: "+ totP.reduce(reducer)+" €"
                 }
             }
-            window.onload = totPanier()
+            menu.addEventListener('click',()=>{
+                aside.style.display = "block"
+                after.style.display = "block"
+            })
+            after.addEventListener('click',()=>{
+                aside.style.display = "none"
+                after.style.display = "none"
+            })
         </script>
 
         <%- include('footer'); -%>

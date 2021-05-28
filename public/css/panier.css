@@ -2,8 +2,52 @@ body{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: #B0D9D1;
+    background: #bebebe;
+    height: 100%;
 }
-/* #cadie{
-    
-} */
+table  {
+    margin: auto;
+    border-collapse: collapse;
+    width: 57%;
+}
+td{
+    /* border-bottom: solid; */
+    width: 25%;
+}
+tbody tr:nth-child(even){
+    background-color: #a5a5a5;
+    margin: 10px;
+}
+tbody tr:nth-child(odd){
+    background-color: #ffffff;
+    border-radius: 30px;
+}
+tbody tr:first-child,
+tbody tr:last-child{
+    background: #7a7a7a;
+    margin: 10px;
+}
+.tdImg{
+    width: 23%;
+}
+.tdImg img{
+    object-fit: cover;
+    width: 100%;
+}
+.prodNom{
+    white-space: nowrap;
+    width: 15%;
+}
+.prodPrix{
+    width: 15%;
+}
+.formCl{
+    width: 27%;
+    margin: auto;
+    display: flex;
+    flex-flow: wrap;
+   justify-content: space-evenly;
+}
+input{
+    margin: 5px;
+}
