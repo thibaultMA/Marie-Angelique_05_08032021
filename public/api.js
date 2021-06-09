@@ -1,29 +1,27 @@
 // add panier
 const btnsAjout = document.querySelectorAll("#ajoutPanier");
-const select = document.querySelector("#select")
+const select    = document.querySelector("#select")
 //        total panier
-const total = document.getElementById("totalPanier");
+const total   = document.getElementById("totalPanier");
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
 // add Prod
 const nameProds = document.querySelectorAll(".name");
-const prix = document.querySelectorAll("p.prix span");
-const imgProds = document.querySelectorAll(".imgProd");
-const ID = document.URL.replace('http://localhost:3000/',"");
+const prix      = document.querySelectorAll("p.prix span");
+const imgProds  = document.querySelectorAll(".imgProd");
+const ID        = document.URL.replace('http://localhost:3000/',"");
 
 let quantity = select.selectedIndex +1;
-
 
 // *****************************************************************************************************************************
 let paniers = [];
 
 for (let i = 0; i < btnsAjout.length; i++) {
   const btnAjout = btnsAjout[i];
-
   //                                      prods
-  const nameProd = nameProds[i].innerText;
-  const imgProd = imgProds[i].currentSrc;
-  const price = parseFloat(prix[i].innerText);
+  const nameProd  = nameProds[i].innerText;
+  const imgProd   = imgProds[i].currentSrc;
+  const price     = parseFloat(prix[i].innerText);
 
   let prod = [nameProd, imgProd, price, quantity,ID]; /* produits */
 
@@ -36,12 +34,13 @@ for (let i = 0; i < btnsAjout.length; i++) {
   var ajjST = () => {
     //  add prod
 
-    prod = [nameProd, imgProd, price, quantity,ID];
-    prodJson = JSON.stringify(prod);
+    prod      = [nameProd, imgProd, price, quantity,ID];
+    prodJson  = JSON.stringify(prod);
     localStorage.setItem(nameProd, prodJson);
     //   add panier
     const totProd = JSON.parse(localStorage[nameProd]);
-        paniers.push(totProd[2]*totProd[3])
+    paniers.push(totProd[2]*totProd[3])
+
     let prixPanier = paniers.reduce(reducer)
     //    push total
     total.innerHTML = "total: " + prixPanier + " €";
@@ -57,7 +56,6 @@ for (let i = 0; i < btnsAjout.length; i++) {
       if (u != "panier" && u != "order" && u!="date") {
         const totProd = JSON.parse(localStorage[u]);
         paniers.push(totProd[2]*totProd[3])
-        
       }
     }  
     if (paniers.length != 0) {
@@ -65,12 +63,6 @@ for (let i = 0; i < btnsAjout.length; i++) {
     console.log(prixPanier);
     total.innerHTML = "total: " + prixPanier + " €";
     }
-    
-    // if(localStorage.getItem(nameProd) != null){
-    //   let totProd = JSON.parse(localStorage.getItem(nameProd))
-    //   
-      
-    // }
     
     document.title = "Orinoco | " +document.querySelector('h2.name').innerHTML
   };
@@ -80,15 +72,13 @@ for (let i = 0; i < btnsAjout.length; i++) {
   btnAjout.addEventListener("click", ajjST);
   
   select.addEventListener('change',()=>{
-    quantity= select.selectedIndex +1
-    prod = [nameProd, imgProd, price, quantity,ID];
+    quantity  = select.selectedIndex +1
+    prod      = [nameProd, imgProd, price, quantity,ID];
     localStorage.setItem(nameProd,JSON.stringify(prod))
-    console.log(prod);
    })
 }
                       // fin boule btn
     // options select
     document.querySelectorAll('.options')[0].setAttribute('selected',"true") 
 
-//************************************************************
 //************************************************************

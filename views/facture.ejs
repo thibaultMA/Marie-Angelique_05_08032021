@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orinoco | facture</title>
+    <title>Orinoco | Facture</title>
     <link rel="stylesheet" href="/css/facture.css" />
 
 <%- include('header'); -%>
 <main>
-    <h2>Résumé de votre commande</h2>
+    <h2 class="titre">Résumé de votre commande</h2>
     <p id="alerte"> 
-        attention si vous été ici c'est que vous n'avez aucun article <br>
-        merci de revenir à <a href="/" style="color: blue;text-decoration: underline;">l'accueil</a> s'il vous plaît
+        Attention si vous été ici, c'est que vous n'avez aucun article <br>
+        Merci de revenir à <a href="/" style="color: blue;text-decoration: underline;">l'accueil</a> s'il vous plaît
     </p>
     <article class="facture">
         <h2 class="Orinoco">Orinoco</h2>
@@ -26,7 +26,7 @@
             <p id="name"></p>
             <p id="Prenom"></p>
             <p id="email"></p>
-            <p id="adresse"></p>
+            
         </div>
         <div class="listeProd">
             <h4>Vos produits :</h4>
@@ -37,7 +37,7 @@
             <p class="totalTTC"></p>
         </div>
     </article>
-    <p>Retour à <a href="/" class="retour" style="color: blue;text-decoration: underline;">l'acceuil</a></p>
+    <p class="ret">Retour à <a href="/" class="retour" style="color: blue;text-decoration: underline;">l'accueil</a></p>
 </main>
 <script src="/facture.js"></script>
 <%- include('footer'); -%>

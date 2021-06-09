@@ -26,18 +26,28 @@ if ( localStorage.getItem('order')!= null) {
     return (a + "").charAt(0).toUpperCase() + a.substring(1);
   }
                   // P info client
+  let infoCl = document.querySelector('.infoCl')
+
   let CLname    = document.querySelector('#name')
   let CLemail   = document.querySelector('#email')
-  let CLadresse = document.querySelector('#adresse')
+
   let CLPrenom  = document.querySelector('#Prenom')
   let CLdate    = document.querySelector('#date')
 
+  let CLadresse = document.createElement('span')
+  let CLcity = document.createElement('span')
+
+  CLadresse.innerHTML = `adresse : ${address} `
+  CLcity.textContent = `à ${city}`
 
   CLname.innerHTML    = `Nom : ${firstName}` 
-  CLPrenom.innerHTML  = ` Prenom : ${lastName}`
-  CLemail.innerHTML   = `email : ${email}`;
-  CLadresse.innerHTML = `address : ${address} à ${city}`
+  CLPrenom.innerHTML  = `Prénom : ${lastName}`
+  CLemail.innerHTML   = `Email : ${email}`
   CLdate.innerHTML    = `Le ${date}`
+
+  infoCl.appendChild(CLadresse)
+  infoCl.appendChild(CLcity)
+  
                               // info produits
   let listeP = document.querySelector('.listeProd')
   let totFacture = []
@@ -69,7 +79,6 @@ if ( localStorage.getItem('order')!= null) {
   listeP.appendChild(entete)
 
   for (const produit of order.products) {
-    console.log(produit.name);
     let prodBlock = document.createElement('div')
     prodBlock.classList.add('factProd')
               // cree prod name
@@ -109,12 +118,22 @@ if ( localStorage.getItem('order')!= null) {
   
                       // n° commande
   let commande  = document.querySelector(".commande") 
-  let numeroCom = document.createElement('p')
-  numeroCom.textContent = "Facture n° : " + order.orderId
+  let numeroCom = document.createElement('span')
+  let spanNum = document.createElement('span')
+
+  spanNum.textContent = order.orderId
+  numeroCom.innerHTML = "Facture n° : "
+  
+  spanNum.classList.add('span')
+  numeroCom.classList.add('span')
+
+  
+  commande.insertBefore(spanNum,commande.childNodes[0])
   commande.insertBefore(numeroCom,commande.childNodes[0])
+  
     
 }else{
-    console.log("order doesn't exist");
+    console.log("le panier est vide");
 }
 
 

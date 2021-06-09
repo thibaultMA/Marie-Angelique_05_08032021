@@ -5,28 +5,24 @@ body{
     background: #bebebe;
     height: 100%;
 }
-main{
-    width: 50%;
-    margin: auto;
+.titre,
+.ret,
+#alerte{
+    text-align: center;
 }
 .facture{
+    margin: auto;
     background: #FFF;
     padding:2% ;
     margin-bottom: 20px;
+    width: 50%;
 }
             /* info client */
 .infoCl{
-    background:#ecdcd1;
+    background:#d1d1d1;
     width: max-content;
     padding: 5px;
     margin-bottom: 10px;
-}
-
-
-
-.facture{
-    border: solid;
-
 }
 .TVA,
 .factProd{
@@ -39,7 +35,8 @@ main{
     text-align: center;
 }
 .imageUrl{
-    width: 200px;
+    width: 50%;
+    max-width: 220px;
     height: 133px;
     object-fit: cover;
 }
@@ -53,9 +50,56 @@ main{
     height: auto;
 }
 @media screen and (max-width:981px) {
+    .facture{
+        width: 70%;
+    }
+    /* .TVA{
+        flex-direction: column;
+    align-items: flex-end;
+    border: none;
+    } */
+}
+@media screen and (max-width:647px){
     .TVA{
         flex-direction: column;
     align-items: flex-end;
     border: none;
+    }
+}
+@media screen and (max-width:567px){
+    .facture{
+        width: 90%;
+    }
+    .TVA{
+        flex-direction: row;
+    align-items: flex-end;
+    border: solid 1px;
+    }
+}
+@media screen and (max-width:503px){
+    .TVA{
+        flex-direction: column;
+    align-items: flex-end;
+    border: none;
+    }
+    .span{
+        display: block;
+        margin: 5px;
+    }
+}
+@media screen and (max-width:339px){
+    .facture{
+        width: 95%;
+        
+    }
+    .titre{
+        font-size: 20px;
+    }
+    .infoCl{
+        width: auto;
+    }
+    .infoCl span{
+        display: block;
+        margin: 8px auto;
     }
 }

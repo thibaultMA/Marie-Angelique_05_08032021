@@ -18,9 +18,9 @@
                 </svg>
                 <aside class="side">
                     <ul>
-                        <li><a href="/">acceuil</a></li>
+                        <li><a href="/">Accueil</a></li>
                         <li><a href="/panier">Votre panier</a></li>
-                        <li>Caméras vintage: </li>
+                        <li>Caméras vintages: </li>
                         <li><a href="/5be1ed3f1c9d44000030b061">Zurss 50S</a></li>
                         <li><a href="/5be1ef211c9d44000030b062">Hirsch 400DTS</a></li>
                         <li><a href="/5be9bc241c9d440000a730e7">Franck JS 105</a></li>
@@ -29,7 +29,7 @@
                     </ul>
                 </aside>
                 <div>
-                <h1 class="titre">Caméras vintage</h1>
+                <h1 class="titre">Caméras vintages</h1>
                 <section class="rayon">
                     <h2 class="pasla">&#x2800;</h2>
                     <% for (let i=0; i < produits.length; i++) { /* for produits */%>
@@ -54,7 +54,7 @@
                             </p>
 
                             <a href="/<%=produits[i]._id %>" class="ajoutPanier">
-                                plus d'info &#x2192;
+                                Plus d'infos &#x2192;
 
                             </a>
                         </div>
@@ -78,7 +78,7 @@
             for (let i = 0; i < localStorage.length; i++) {
             const u = localStorage.key(i);
 
-                if (u != "panier" && u != "order" && u!="date") {
+                if (u != "order" && u!="date") {
                 const prods = JSON.parse(localStorage[u]);
                 totP.push(prods[2]*prods[3])
                 total.innerHTML = "total: "+ totP.reduce(reducer)+" €"
@@ -92,6 +92,6 @@
                 aside.style.display = "none"
                 after.style.display = "none"
             })
+            
         </script>
-
         <%- include('footer'); -%>

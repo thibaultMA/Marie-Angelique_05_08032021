@@ -23,27 +23,38 @@
                 <td>Quantité</td>
             </tr>
         </tbody>
+        
     </table>
-    <p class="err" style="color: red;"></p>
+    <p class="err"></p>
     
     <!-- ***************************************************************** -->
     
     <form class="formCl">
-        <label for="firstName">Prèsnom :</label>
-        <input  id="firstName" type="text" name="firstName" placeholder="(Julie, Martin, ...)" required pattern="[a-z A-ZÈÉÎÏÖéèîïÜüûÛ\-]+"> 
-        <label for="lastName">nom :</label>
-        <input id="lastName" type="text" name="lastName" placeholder="(Dupont, ...)"  required pattern="[a-z A-ZÈÉÎÏÖéèîïÜüûÛ\-]+"> 
-        <label for="address">address :</label>
-        <input  id="address" type="text" name="address" placeholder="(24 Rue de-chez-moi, ...)"  required pattern="[a-zA-Z-éÉèÈàÀùÙâÂêÊîÎôÔûÛïÏëËüÜçÇæœ'. 0-9\-]+">
-        <label for="city">ville :</label>
-        <input id="city" type="text" name="city" placeholder="(Paris, lyon, ...)"  required pattern="[a-z A-ZÈÉÎÏÖéèîïÜüûÛ\-]+"> 
-        <label for="email">email :</label>
-        <input id="email" type="email" name="email" placeholder="(J.dupont@email.com, ...)"  required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z-_]+\.[a-z]{2,4}$"> <br>
-        <button  type="submit" id="POSTFORM" >valider</button>
+        <div class="formBlock">
+            <label for="firstName">Prénom :</label><br>
+            <input  id="firstName" type="text" name="firstName" placeholder="(Julie, Martin, ...)" required pattern="[a-z A-ZÈÉÎÏÖéèîïÜüûÛ\-]+"> 
+        </div>
+        <div class="formBlock">
+            <label for="lastName">Nom :</label><br>
+            <input id="lastName" type="text" name="lastName" placeholder="(Dupont, ...)"  required pattern="[a-z A-ZÈÉÎÏÖéèîïÜüûÛ\-]+"> 
+        </div>
+        <div class="formBlock">
+            <label for="address">Adresse :</label><br>
+            <input  id="address" type="text" name="address" placeholder="(24 Rue de-chez-moi, ...)"  required pattern="[a-zA-Z-éÉèÈàÀùÙâÂêÊîÎôÔûÛïÏëËüÜçÇæœ'. 0-9\-]+">
+        </div>
+        <div class="formBlock">
+            <label for="city">Ville :</label><br>
+            <input id="city" type="text" name="city" placeholder="(Paris, lyon, ...)"  required pattern="[a-z A-ZÈÉÎÏÖéèîïÜüûÛ\-]+">
+        </div> 
+        <div class="formBlock">
+            <label for="email">Email :</label><br>
+            <input id="email" type="email" name="email" placeholder="(J.dupont@email.com, ...)"  required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z-_]+\.[a-z]{2,4}$">
+        </div>
+        <button class="formBlock" type="submit" id="POSTFORM" >valider</button>
     </form>
     
-    <p style="color: red;" id="erreur"></p>
+   <div id="erreur"><span>Votre panier est vide.</span> <a href="/">Continuer vos achats ?</a></div>
     
-    </main>
+</main>
 <script src="/panier.js"></script>
 <%- include('footer'); -%>

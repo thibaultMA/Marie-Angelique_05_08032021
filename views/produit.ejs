@@ -16,7 +16,7 @@
     <%- include('header'); -%>
     <main>
         
-        <% if(page ==="/"+ idZero ){ %><!-- if prod 1 -->
+        <% if(page ==="/"+ idZero ){ %><!--************************* if prod 1 *************************-->
             <% var prix=(Math.round(produitZero.price) /100).toFixed(2); %>
             
         <section>
@@ -50,8 +50,10 @@
                         </div>
                         <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
                         <p><b>Description :</b>  <br><%= produitZero.description %></p>
+                                        <!-- ************************* Fin prod 1 ************************* -->
+
         <%} %>
-        <% if(page === "/"+ idUn ){ %><!-- if prod 2 -->
+        <% if(page === "/"+ idUn ){ %><!-- ************************* if prod 2 *************************-->
             <% var prix=(Math.round(produitUn.price) /100).toFixed(2); %>
         <section>
             <h2 class="pasla">&#x2800;</h2>
@@ -84,8 +86,10 @@
                     </div>
                     <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
                     <p><b>Description :</b>  <br><%= produitUn.description %></p>
+                                        <!-- ************************* Fin prod 2 ************************* -->
+
         <%} %>
-        <% if(page === "/"+ idDeux ){ %><!-- if prod 3 -->
+        <% if(page === "/"+ idDeux ){ %><!--************************* if prod 3 *************************-->
             <% var prix=(Math.round(produitDeux.price) /100).toFixed(2); %>
         <section>
             <h2 class="pasla">&#x2800;</h2>
@@ -117,9 +121,11 @@
                         </span> 
                     </div>
                     <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
-                    <p><b>Description :</b>  <br><%= produitDeux.description %></p>          
+                    <p><b>Description :</b>  <br><%= produitDeux.description %></p>
+                                        <!-- ************************* Fin prod 3 ************************* -->
         <%} %>
-        <% if(page === "/"+ idTrois ){ %><!-- if prod 4 -->
+
+        <% if(page === "/"+ idTrois ){ %><!--************************* if prod 4 *************************-->
             <% var prix=(Math.round(produitTrois.price) /100).toFixed(2); %>
         <section>
             <h2 class="pasla">&#x2800;</h2>
@@ -152,8 +158,10 @@
                     </div>
                     <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
                     <p><b>Description :</b>  <br><%= produitTrois.description %></p>
+                                        <!-- ************************* Fin prod 4 ************************* -->
         <%} %>
-        <% if(page === "/"+ idQuatre ){ %><!-- if prod 5 -->
+
+        <% if(page === "/"+ idQuatre ){ %><!--************************* if prod 5 *************************-->
             <% var prix=(Math.round(produitQuatre.price) /100).toFixed(2); %>
         <section>
             <h2 class="pasla">&#x2800;</h2>
@@ -186,13 +194,14 @@
                     </div>
                     <p class="prix"><b>Prix :</b><span> <%= prix %></span> €</p>
                     <p><b>Description :</b>  <br><%= produitQuatre.description %></p>
+                                        <!-- ************************* Fin prod 5 ************************* -->
         <% } %>
                 
                     
                     
                     <p><b>quantité : </b></p>
                     <select name="quantity" id="select">
-                        <% for (let i = 1; i < 6; i++) { %>
+                        <% for (let i = 1; i < 7; i++) { %>
                         <option value="<%= i %> " class="options">
                             <%= i %> 
                         </option>
